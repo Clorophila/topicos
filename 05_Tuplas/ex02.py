@@ -12,12 +12,12 @@ a imagem).
 '''
 import random
 
-matrix = []
+matrix = tuple([])
 for i in range(10):
     linha = []
     for j in range(10):
         linha.append(random.randrange(0,256,1))
-    matrix.append(linha)
+    matrix = matrix + (linha,)
 
 for linha in matrix:
     print(linha)
