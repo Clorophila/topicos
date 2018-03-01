@@ -10,3 +10,14 @@ valores correspondem às tonalidades aplicadas sobre
 a imagem).
 - Apresente em tela os valores gerados.
 '''
+import random
+
+matrix = []
+for i in range(10):
+    linha = []
+    for j in range(10):
+        linha.append(random.randrange(0,256,1))
+    matrix.append(linha)
+
+for linha in matrix:
+    print(linha)
