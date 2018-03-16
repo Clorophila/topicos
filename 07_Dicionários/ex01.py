@@ -16,6 +16,7 @@ segurança.
 import random
 import string
 import os
+import operator
 
 class Usuario:
     usuarios = {}
@@ -64,20 +65,21 @@ def criar_usuario(users):
     menu()
     nome = input('-> Digite seu nome: ')
     id = len(users)+1
-    #try:
-    users.append(Usuario(nome,id))
-    print('ID: {}'.format(users[-1].id))
-    print('Nome: {}'.format(users[-1].name))
-    print('Usuário: {}'.format(users[-1].username))
-    print('senha: {}'.format(users[-1].password))
-    input()
-    #except:
-    #    print('Erro ao criar o usuário.')
+    try:
+        users.append(Usuario(nome,id))
+        print('ID: {}'.format(users[-1].id))
+        print('Nome: {}'.format(users[-1].name))
+        print('Usuário: {}'.format(users[-1].username))
+        print('senha: {}'.format(users[-1].password))
+        input()
+    except:
+        print('Erro ao criar o usuário.')
 
-def listar_usuarios(users):
+def listar_usuarios(users,chave):
     os.system('clear')
     print('{0:5} | {1:15} | {2:15} | {3}'.format('ID','Username','Senha','Nome'))
-    for usuario in users:
+    users_ordenado = sorted(users, key=operator.attrgetter(chave))
+    for usuario in users_ordenado:
         print('{0:5} | {1:15} | {2:15} | {3}'.format(usuario.id,usuario.username,usuario.password,usuario.name))
     input()
 
@@ -89,7 +91,23 @@ while not sair:
     op = input('-> Digite a opção desejada: ')
     if op == '1':
         criar_usuario(users)
-    elif op == '2':
-        listar_usuarios(users)
+    elif op == '2':        
+        while True:
+            try:
+                print('Ordenar por Id: 1, Nome: 2, Username: 3 ')
+                op = input()
+                if op == '1':
+                    listar_usuarios(users,'id')
+                    break
+                if op == '2':
+                    listar_usuarios(users,'name')
+                    break
+                if op == '3':
+                    listar_usuarios(users,'username')
+                    break
+                else:
+                    raise ValueError()
+            except ValueError:
+                print('Valor inválido!')        
     elif op == '0':
         sair = True
