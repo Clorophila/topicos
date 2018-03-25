@@ -7,3 +7,9 @@ string_list = input().split(',')
 
 for word in string_list:
     print(word,end=' ')
+
+string_list.sort()
+
+print('Lista ordenada: ')
+for word in string_list:
+    print(word,end=' ')
