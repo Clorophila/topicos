@@ -15,5 +15,5 @@ print('Lista ordenada: ')
 for word in string_list:
     if word!= string_list[-1]:
         print(word,end=', ')
-    else
+    else:
         print(word)
