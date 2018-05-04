@@ -20,7 +20,7 @@ import locale
 import os
 locale.setlocale(locale.LC_ALL,"")
 
-#os.system('cls')
+os.system('cls')
 
 f = open("soneto.txt","w")
 f.writelines(soneto)
