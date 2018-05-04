@@ -20,7 +20,7 @@ import locale
 import os
 locale.setlocale(locale.LC_ALL,"")
 
-os.system('cls')
+#os.system('cls')
 
 f = open("soneto.txt","w")
 f.writelines(soneto)
@@ -31,9 +31,13 @@ f = open("soneto.txt","r")
 c = open("copia_soneto.txt","w+")
 c.writelines(f.read())
 
-print(f.read())
-print(c.read())
+f.seek(0)
+c.seek(0)
+
+arquivo = f.read()
+copia = c.read()
+print(arquivo)
+print(copia)
 
 f.close()
 c.close()
-
