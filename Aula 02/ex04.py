@@ -26,19 +26,14 @@ f = open("soneto.txt","w")
 f.writelines(soneto)
 f.close()
 
+#-------------------------------------
 f = open("soneto.txt","r")
-texto = f.read().strip('\n').strip('.').strip(':').strip(';').strip(',')
+c = open("copia_soneto.txt","w+")
+c.writelines(f.read())
+
+print(f.read())
+print(c.read())
+
 f.close()
+c.close()
 
-print(texto)
-
-palavras={}
-
-for palavra in texto.split():
-    if palavra not in palavras:
-        palavras[palavra] = 1
-    else:
-        palavras[palavra] += 1
-
-print(palavra)
-print(palavras)
